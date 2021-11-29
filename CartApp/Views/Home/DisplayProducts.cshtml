@@ -1,0 +1,55 @@
+﻿@model IEnumerable<CartApp.Models.Product>
+
+@{
+    ViewData["Title"] = "DisplayProducts";
+}
+
+<h1>Products</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.availableQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cartId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.availableQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cartId)
+            </td>
+            <td>
+                <a asp-controller="Home" asp-action="AddUpdateProduct" asp-route-id="@item.productId">Edit</a> |
+                <a asp-controller="Home" asp-action="deleteProduct" asp-route-id="@item.productId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
